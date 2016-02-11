@@ -8,4 +8,8 @@ class EmployeeReviewsTest < Minitest::Test
     assert Employee
   end
 
+  def test_department_class_exists
+    assert Department
+  end
+
 end

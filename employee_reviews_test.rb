@@ -54,4 +54,13 @@ class EmployeeReviewsTest < Minitest::Test
     person we have ever had in our company. We should give him a huge raise because of
     his amazing ability and we can't afford to lose him.", e.review
   end
+
+  def test_employee_performance
+    e = Employee.new(name: "Jefferson Neel", email: "neel@mail.com",
+                     phone_number: "919-555-5555", salary: 75000)
+    e.set_performance("Satisfactory")
+    assert_equal "Satisfactory", e.performance
+    e.set_performance("Not satisfactory")
+    assert_equal "Not satisfactory", e.performance
+  end
 end

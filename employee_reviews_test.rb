@@ -23,5 +23,11 @@ class EmployeeReviewsTest < Minitest::Test
     assert_equal "919-555-5555", e.phone_number
     assert_equal 75000, e.salary
   end
-  
+
+  def test_add_employee_to_department
+    d = Department.new("Accounting")
+    e = Employee.new("Jefferson Neel", "jeffneel@mail.com", "919-555-5555", 75000)
+    d.add_employee(e)
+    assert_equal e, d.employees[0]
+  end
 end

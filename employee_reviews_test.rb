@@ -43,4 +43,15 @@ class EmployeeReviewsTest < Minitest::Test
     d.add_employee(e2)
     assert_equal 150000, d.total_salary
   end
+
+  def test_add_employee_review
+    e = Employee.new(name: "Jefferson Neel", email: "neel@mail.com",
+                     phone_number: "919-555-5555", salary: 75000)
+    e.add_review("Jeff is a good employee and does everything we ask. He is the best
+    person we have ever had in our company. We should give him a huge raise because of
+    his amazing ability and we can't afford to lose him.")
+    assert_equal "Jeff is a good employee and does everything we ask. He is the best
+    person we have ever had in our company. We should give him a huge raise because of
+    his amazing ability and we can't afford to lose him.", e.review
+  end
 end

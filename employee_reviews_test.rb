@@ -63,4 +63,11 @@ class EmployeeReviewsTest < Minitest::Test
     e.set_performance("Not satisfactory")
     assert_equal "Not satisfactory", e.performance
   end
+
+  def test_give_raise_to_individual
+    e = Employee.new(name: "Jefferson Neel", email: "jeff@mail.com",
+                     phone_number: "919-555-5555", salary: 75000)
+    e.give_raise(10000)
+    assert_equal 85000, e.salary
+  end
 end

@@ -16,7 +16,7 @@ class Employee
     @performance = performance
   end
 
-  def give_raise(amount)
+  def give_raise(amount = 0)
     @salary += amount
   end
 end

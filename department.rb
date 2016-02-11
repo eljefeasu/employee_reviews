@@ -18,4 +18,11 @@ class Department
     total_salary
   end
 
+  def give_raises(amount)
+    count = 0
+    @employees.each {|e| count += 1 if e.performance == "Satisfactory"}
+    (distributed_amount = amount / count) if count > 0
+    @employees.each {|e| e.give_raise(distributed_amount) if e.performance == "Satisfactory"}
+  end
+
 end

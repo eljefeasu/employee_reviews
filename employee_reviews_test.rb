@@ -71,7 +71,7 @@ class EmployeeReviewsTest < Minitest::Test
     assert_equal 85000, e.salary
   end
 
-  def test_give_departments_employees_raises
+  def test_give_departments_raises_based_on_performance
     d = Department.new("Accounting")
     e1 = Employee.new(name: "Jefferson", email: "jeff@mail.com",
                      phone_number: "919-555-5555", salary: 75000)
@@ -85,10 +85,49 @@ class EmployeeReviewsTest < Minitest::Test
     d.add_employee(e1)
     d.add_employee(e2)
     d.add_employee(e3)
-    d.give_raises(10000)
+    d.give_raises(10000) {|e| e.performance == "Satisfactory"}
     assert_equal 80000, e1.salary
     assert_equal 80000, e2.salary
     assert_equal 75000, e3.salary
   end
 
+  def test_give_departments_raises_based_on_salary
+    d = Department.new("Accounting")
+    e1 = Employee.new(name: "Jefferson", email: "jeff@mail.com",
+                     phone_number: "919-555-5555", salary: 75000)
+    e2 = Employee.new(name: "Molly", email: "molly@mail.com",
+                     phone_number: "123-456-7890", salary: 75000)
+    e3 = Employee.new(name: "Jonathan", email: "jonathan@mail.com",
+                     phone_number: "123-123-1234", salary: 75000)
+    e1.set_performance("Satisfactory")
+    e2.set_performance("Satisfactory")
+    e3.set_performance("Not satisfactory")
+    d.add_employee(e1)
+    d.add_employee(e2)
+    d.add_employee(e3)
+    d.give_raises(30000.0) {|e| e.salary < 100000}
+    assert_equal 85000, e1.salary
+    assert_equal 85000, e2.salary
+    assert_equal 85000, e3.salary
+  end
+
+  def test_give_deparments_raises_based_on_employee_name
+    d = Department.new("Accounting")
+    e1 = Employee.new(name: "Jefferson", email: "jeff@mail.com",
+                     phone_number: "919-555-5555", salary: 75000)
+    e2 = Employee.new(name: "Molly", email: "molly@mail.com",
+                     phone_number: "123-456-7890", salary: 75000)
+    e3 = Employee.new(name: "Jonathan", email: "jonathan@mail.com",
+                     phone_number: "123-123-1234", salary: 75000)
+    e1.set_performance("Satisfactory")
+    e2.set_performance("Satisfactory")
+    e3.set_performance("Not satisfactory")
+    d.add_employee(e1)
+    d.add_employee(e2)
+    d.add_employee(e3)
+    d.give_raises(10000.0) {|e| e.name == "Jefferson"}
+    assert_equal 85000, e1.salary
+    assert_equal 75000, e2.salary
+    assert_equal 75000, e3.salary
+  end
 end

@@ -22,6 +22,6 @@ Modify department method used to give out raises. Use a block to specify which e
 Use regular expressions to scan text of an employee review and determine if the employee is performing satisfactorily or not.
 
 #### Estimate for amount of time to complete each part
-* Part One: 4 hours
-* Part Two: 2 hours
+* Part One: 4 hours (actual time: 4 hours)
+* Part Two: 2 hours (actual time: 1 hour)
 * Part Three: 5 hours

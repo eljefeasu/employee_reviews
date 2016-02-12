@@ -20,9 +20,9 @@ class Department
 
   def give_raises(amount)
     count = 0
-    @employees.each {|e| count += 1 if e.performance == "Satisfactory"}
+    @employees.each {|e| count += 1 if yield(e)}
     (distributed_amount = amount / count) if count > 0
-    @employees.each {|e| e.give_raise(distributed_amount) if e.performance == "Satisfactory"}
+    @employees.each {|e| e.give_raise(distributed_amount) if yield(e)}
   end
 
 end

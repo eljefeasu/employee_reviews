@@ -19,13 +19,17 @@ class Employee
     positive_regex = [/positive/i, /encourage/i, /valuable/, /[^not] useful/i,
                       /\badequate/, /well/, /asset/, /\bpleasure/, /quick?l?y/,
                       /help others/, /\bsuccess/, /\bhappy/, /\bconsistent/,
-                      /\beffective/, /\bsatisfied/, /\bimpressed/, /\bwilling/,
-                      /asset/, /joy/, /\bperfect/]
+                      /\beffective/, /\bsatisfied/, /\bimpressed/, /\bwilling/i,
+                      /asset/, /joy/, /\bperfect/, /[^not] high level/, /better/,
+                      /exceptional/i, /steady/i, /strong/i, /unstopped/i, /exceed/i,
+                      /done right/i, /solid/i, /\bconsistent/i]
     negative_regex = [/not done/i, /room for improvement/i, /tendency/i, /difficult/i,
                       /confusion/i, /negative/i, /not useful/i, /inadequate/i,
                       /limitation/i, /concerns?/i, /longer/i, /interrupt/i,
                       /talk over others/i, /dwell/i, /off topic/i, /concern?s/i,
-                      /unsuccessful/i, /inconsistent/i, /ineffective/i, /unwilling/i]
+                      /unsuccessful/i, /inconsistent/i, /ineffective/i, /unwilling/i,
+                      /late/i, /lazy/i, /behind/, /unpredictable/i, /not consistent/i,
+                      /miss/i]
 
     if @review
       positive_regex.each do |w|

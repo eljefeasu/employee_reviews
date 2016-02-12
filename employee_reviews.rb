@@ -49,9 +49,17 @@ she is the perfect woman for the job.  We know that work on a single project can
 so over the next few months, we hope to spread some of the Cement Company work to others.  This will also
 allow Wanda to pair more with others and spread her effectiveness to other projects."
 
+@internet_positive_one = "Jim continues to be a valued member of our crew and is a person we are able to count on. Jim's focus to his attendance and punctuality has made our core group operate significantly better over the past 12 months.
+
+Tim is extremely dependable with regard to his attendance and regularly exhibits punctuality.
+
+Janet starts every day refreshed and ready for any problems she may face throughout the work day.
+
+George often makes certain his workers adhere to their lunch schedules and breaks. "
 
 
-e1.add_review(@positive_review_one)
+
+e1.add_review(@internet_positive_one)
 e2.add_review(@positive_review_two)
 e3.add_review(@negative_review_one)
 

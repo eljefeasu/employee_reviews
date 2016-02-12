@@ -103,7 +103,8 @@ class EmployeeReviewsTest < Minitest::Test
   def test_employee_performance
     e = Employee.new(name: "Jefferson", email: "neel@mail.com",
                      phone_number: "919-555-5555", salary: 75000)
-
+    e.add_review(positive_review_one)
+    assert_equal 5.0, e.get_performance
   end
 
   def test_give_raise_to_individual
@@ -124,13 +125,10 @@ class EmployeeReviewsTest < Minitest::Test
     e1.add_review(positive_review_one)
     e2.add_review(positive_review_two)
     e3.add_review(negative_review_one)
-    assert e1.get_performance
-    assert e2.get_performance
-    refute e3.get_performance
     d.add_employee(e1)
     d.add_employee(e2)
     d.add_employee(e3)
-    d.give_raises(10000) {|e| e.performance}
+    d.give_raises(10000) {|e| e.get_performance > 2.5}
     assert_equal 80000, e1.salary
     assert_equal 80000, e2.salary
     assert_equal 75000, e3.salary
@@ -147,9 +145,6 @@ class EmployeeReviewsTest < Minitest::Test
     e1.add_review(positive_review_one)
     e2.add_review(positive_review_two)
     e3.add_review(negative_review_one)
-    assert e1.get_performance
-    assert e2.get_performance
-    refute e3.get_performance
     d.add_employee(e1)
     d.add_employee(e2)
     d.add_employee(e3)
@@ -170,9 +165,6 @@ class EmployeeReviewsTest < Minitest::Test
     e1.add_review(positive_review_one)
     e2.add_review(positive_review_two)
     e3.add_review(negative_review_one)
-    assert e1.get_performance
-    assert e2.get_performance
-    refute e3.get_performance
     d.add_employee(e1)
     d.add_employee(e2)
     d.add_employee(e3)

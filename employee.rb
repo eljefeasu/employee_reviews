@@ -1,5 +1,5 @@
 class Employee
-  attr_reader :name, :email, :phone_number, :salary, :review, :performance
+  attr_reader :name, :email, :phone_number, :salary, :review
 
   def initialize(name: , email:, phone_number:, salary:)
     @name = name
@@ -39,9 +39,28 @@ class Employee
       end
 
       if positive_words > negative_words
-        @performance = true
+        positive_performance = negative_words.to_f/positive_words.to_f
+
+        if positive_performance >= 0.0 && positive_performance <= 0.25
+          performance = 5.0
+        elsif positive_performance > 0.25 && positive_performance <= 0.5
+          performance = 4.0
+        else
+          performance = 3.0
+        end
+
+      elsif negative_words > positive_words
+        negative_performance = positive_words.to_f/negative_words.to_f
+
+        if negative_performance >= 0.0 && negative_performance <= 0.25
+          performance = 0.0
+        elsif negative_performance > 0.25 && negative_performance <= 0.5
+          performance = 1.0
+        else
+          performance = 2.0
+        end
       else
-        @performance = false
+        performance = 2.5
       end
 
     else

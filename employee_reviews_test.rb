@@ -111,7 +111,7 @@ class EmployeeReviewsTest < Minitest::Test
     e = Employee.new(name: "Jefferson", email: "jeff@mail.com",
                      phone_number: "919-555-5555", salary: 75000)
     e.give_raise(10000)
-    assert_equal 85000, e.salary
+    assert_in_delta e.salary, 85000, 0.001
   end
 
   def test_give_departments_raises_based_on_performance
@@ -129,9 +129,9 @@ class EmployeeReviewsTest < Minitest::Test
     d.add_employee(e2)
     d.add_employee(e3)
     d.give_raises(10000) {|e| e.get_performance > 2.5}
-    assert_equal 80000, e1.salary
-    assert_equal 80000, e2.salary
-    assert_equal 75000, e3.salary
+    assert_in_delta e1.salary, 80000, 0.001
+    assert_in_delta e2.salary, 80000, 0.001
+    assert_in_delta e3.salary, 75000, 0.001
   end
 
   def test_give_departments_raises_based_on_salary
@@ -149,9 +149,9 @@ class EmployeeReviewsTest < Minitest::Test
     d.add_employee(e2)
     d.add_employee(e3)
     d.give_raises(30000.0) {|e| e.salary < 100000}
-    assert_equal 85000, e1.salary
-    assert_equal 85000, e2.salary
-    assert_equal 85000, e3.salary
+    assert_in_delta e1.salary, 85000, 0.001
+    assert_in_delta e2.salary, 85000, 0.001
+    assert_in_delta e3.salary, 85000, 0.001
   end
 
   def test_give_deparments_raises_based_on_employee_name
@@ -169,8 +169,8 @@ class EmployeeReviewsTest < Minitest::Test
     d.add_employee(e2)
     d.add_employee(e3)
     d.give_raises(10000.0) {|e| e.name == "Jefferson"}
-    assert_equal 85000, e1.salary
-    assert_equal 75000, e2.salary
-    assert_equal 75000, e3.salary
+    assert_in_delta e1.salary, 85000, 0.001
+    assert_in_delta e2.salary, 75000, 0.001
+    assert_in_delta e3.salary, 75000, 0.001
   end
 end

@@ -25,3 +25,5 @@ Use regular expressions to scan text of an employee review and determine if the 
 * Part One: 4 hours (actual time: 4 hours)
 * Part Two: 2 hours (actual time: 1 hour)
 * Part Three: 5 hours (actual time: 4 hours)
+I feel like my estimates were pretty on target. The hardest part for this assignment was figuring out
+regex, but overall it wasn't as bad as I thought it might be.
